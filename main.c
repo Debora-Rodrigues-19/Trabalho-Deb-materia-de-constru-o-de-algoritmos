@@ -1,18 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include <locale.h>
-/*
-#strlen(<string>); // para retornar a quantidade de caracteres utilizados.... 
-tamanho = strlen(exemplo);
-#strcpy(<destino>,<origem>); // copia o conteudo da string origem na string destino.... 
-gets(exemplo); ... strycpy(novo,exempolo);
-#stract(<destino>,<origem>); //Conecta o conteudo da string origem na string destino, ou seja, junta o conteudo da string origem ao final da string destino... 
-strcat(nome,sobrenome);
-#strcmp(<string1>,<string2>); //compara s
-e o valor da string1 é igual o valor da string2. retorna a 0 caso os dois valores sejam iguais..... 
-if(strcmp(exemplo1,exemplo2)==0{
-  printf......}
-  */
 
 char nome[50]={0};
 char sobrenome[50]={0};
@@ -60,8 +48,8 @@ void introducao() // DONE !
   printf("\n\tCONSTRUÇÃO DE ALGORITMOS\n");
   printf("\n-----PROFESSOR: Maurício Zardo Oliveira\n\n");
 
-  system("sleep 2");  /* Trocar por "pause" */
-  system("clear");    /* Trocar por "cls" */
+  system("pause");  /* Trocar por "pause" */
+  system("cls");    /* Trocar por "cls" */
 }
 
 void menu_delivery()  // DONE !
@@ -91,17 +79,14 @@ void menu_delivery()  // DONE !
   printf("\n\n...............................................\n\n");
 }
 
-void recebe_hamburguer ()
+int recebe_hamburguer ()
 {
   printf("\tDIGITE SUA ESCOLHA DE HAMBURGUER:\t");
   scanf("%d",&pedido_hamburguer);
   fflush(stdin);
 
   if (pedido_hamburguer == 0)
-  {
-    soma_hamburguer = 0;
-    //recebe_porcao();
-  }
+    recebe_porcao();
 
   if (  pedido_hamburguer == 1 ||
         pedido_hamburguer == 2 ||
@@ -117,7 +102,7 @@ void recebe_hamburguer ()
             fflush(stdin);
             soma_hamburguer = soma_hamburguer + (precos_menu[0]*quant_H_simples);
             printf("\n[%d] HAMBÚRGUER SIMPLES ADICIONADO\n", quant_H_simples);
-            printf("\n****só pra saber que ta funcionando \nCalculando o Subtotal R$ %.2f  \n\n",soma_hamburguer); 
+            printf("\n****só pra saber que ta funcionando \nCalculando o Subtotal R$ %.2f  \n\n",soma_hamburguer);
 
             break;
 
@@ -127,7 +112,7 @@ void recebe_hamburguer ()
             fflush(stdin);
             soma_hamburguer = soma_hamburguer + (precos_menu[1]*quant_H_duplo);
             printf("\n[%d] HAMBÚRGUER DUPLO ADICIONADO\n\n", quant_H_duplo);
-            
+
             break;
         case 3:
             printf("HAMBUGUER PICANTE. QUANTIDADE:   ");
@@ -151,11 +136,10 @@ void recebe_hamburguer ()
   }
   else
   {
-    printf("\n--- TENTE NOVAMENTE ---");
-    printf("\n\n INSIRA A ESCOLHA DE HAMBURGUER:   ");
-    scanf("%d",&pedido_hamburguer);
-    fflush(stdin);
+    printf("\n--- TENTE NOVAMENTE ---\n");
+    //recebe_hamburguer();
   }
+  return soma_hamburguer;
 }
 
 void recebe_porcao ()
@@ -166,9 +150,7 @@ void recebe_porcao ()
 
   if (pedido_porcao == 0)
   {
-    soma_porcoes = 0;
-    printf("\n\n... RECEBER PORÇÕES ...  ");
-    //recebe_porcoes();
+    recebe_bebidas();
   }
 
   if (  pedido_porcao == 6 ||
@@ -202,13 +184,10 @@ void recebe_porcao ()
   }
   else
   {
-    printf("\n--- TENTE NOVAMENTE ---");
-    printf("\n\n INSIRA A ESCOLHA DE PORÇÃO:   ");
-    scanf("%d",&pedido_porcao);
-    fflush(stdin);
+    printf("\n--- TENTE NOVAMENTE ---\n");
+    //recebe_porcao();
   }
 }
-
 
 void recebe_bebidas ()
 {
@@ -216,18 +195,11 @@ void recebe_bebidas ()
   scanf("%d",&pedido_bebidas);
   fflush(stdin);
 
-  if (pedido_bebidas == 0)
-  {
-    soma_bebidas = 0;
-    printf("\n...  ");
-    //recebe_porcoes();
-  }
-
   if (pedido_bebidas == 9  ||
       pedido_bebidas == 10 ||
       pedido_bebidas == 11   )
   {
-    switch (pedido_bebidas)
+    switch (pedido_bebidas),+88888
     {
         case 9:
             printf("ÁGUA. QUANTIDADE :   ");
@@ -250,10 +222,8 @@ void recebe_bebidas ()
   }
   else
   {
-    printf("\n--- TENTE NOVAMENTE ---");
-    printf("\n DIGITE A ESCOLHA DE BEBIDA:   ");
-    scanf("%d",&pedido_bebidas);
-    fflush(stdin);
+    printf("\n--- TENTE NOVAMENTE ---\n");
+    //recebe_bebidas();
   }
 }
 
@@ -267,11 +237,11 @@ void recebe_dados_cliente() // PRECISA FAZER
 /*
 float calcula_pedido() // quantidade do item pedido vezes o valor, soma dos resultados = valor total.
 {
-  
+
   valor_Habugurguer
 
   valor_Porcoes
-  
+
   valor_Bebidas
 
   valor_Haburguer + valor_Bebidas + valor_Porcoes =valor_total
@@ -282,9 +252,9 @@ float calcula_pedido() // quantidade do item pedido vezes o valor, soma dos resu
 int forma_pagamento () // DONE !
 {
   int forma_pagamento=0;
-    
+
   printf(" Escolha sua forma de pagamento: \n");
-  printf(" 1 . PIX\n");
+  printf(" 1 . DINHEIRO\n");
   printf(" 2 . CARTÃO (crédito / débito\n");
   scanf("%d",&opcao_pagamento);
   fflush(stdin);
@@ -292,43 +262,61 @@ int forma_pagamento () // DONE !
   {
     case 1:
       forma_pagamento = 1;
-      printf("FORMA DE PAGAMENTO SELECIONADA - PIX");
+      printf("FORMA DE PAGAMENTO SELECIONADA: DINHEIRO");
 
     break;
-    
+
     case 2:
       forma_pagamento = 2;
-      printf("FORMA DE PAGAMENTO SELECIONADA - CARTÃO (crédito / débito");
+      printf("FORMA DE PAGAMENTO SELECIONADA: CARTÃO (crédito / débito");
     break;
   }
 
-  return forma_pagamento;    
+  return forma_pagamento;
 }
 
 int main()
 {
   setlocale(LC_ALL,"Portuguese");
+  int repassar = 0;
+
   // introducao do grupo
   introducao();
 
   // apresenta menu do delivery
   menu_delivery();
-  
+
 
   // pega pedidos do cliente
+
   recebe_hamburguer();
   recebe_porcao();
-  recebe_bebidas ();
+  //recebe_bebidas ();
 
-  
+   printf("\n\n EXIBIR SUBTOTAL...\n\n");
+   printf("DESEJA ADICIONAR ALGO? \n\t1 . SIM\n\t2 . NÃO\n");
+   scanf("%d",&repassar);
+
+   while (repassar == 1)
+   {
+    menu_delivery();
+    recebe_hamburguer();
+    recebe_porcao();
+    recebe_bebidas ();
+   }
+   // pega forma de pagamento
+  printf("\n\n\n%d",forma_pagamento());
+  }
+
+//if (recebe_hamburguer == 0 && recebe_porcao == 0 && recebe_bebidas == 0);
+
   //printf("Hamburguer: %d\t",pedido_user[0]);
   //printf("Porção: %d\t",pedido_user[1]);
   //printf("Bebida: %d\t",pedido_user[2]);
-  
-  printf("\n\n EXIBIR SUBTOTAL\n\n");
 
-  // pega forma de pagamento
-  printf("\n\n\n%d",forma_pagamento());
+
+
+
 
   return 0;
 }
@@ -337,7 +325,7 @@ int main()
 // implementar : forma de pagamento
 
 /*
-    RECEBE PEDIDO 
+    RECEBE PEDIDO
     recebe_pedidos();
     Digite a escolha de hamburguer...
       caso digite 0 : não adiciona hamburguer e passa pra opção Porção;
