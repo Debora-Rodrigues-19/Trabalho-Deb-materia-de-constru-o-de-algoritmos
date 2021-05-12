@@ -22,8 +22,6 @@ int numero=0;
 int opcao_pagamento=0;
 int total=0;
 int cpf=0;
-int categoria = 0;
-
 
 float precos_menu[12] = {10.0,12.0,13.0,14.0, 11.0, 5.0, 6.5, 6.0, 2.0, 3.0, 4.5, 0.0};
 
@@ -102,7 +100,7 @@ void recebe_hamburguer ()
   if (pedido_hamburguer == 0)
   {
     soma_hamburguer = 0;
-    recebe_porcao();
+    //recebe_porcao();
   }
 
   if (  pedido_hamburguer == 1 ||
@@ -315,31 +313,7 @@ int main()
 
   // apresenta menu do delivery
   menu_delivery();
-  do
-  {
-
-    printf("\nH - HAMBÚRGUER");
-    printf("\nP - PORÇÃO");
-    printf("\nB - BEBIDAS");
-    printf("\n\n9 - DESISTIR OU FINALIZAR\n");
-
-        printf("\nDIGITE A CATEGORIA: ");
-        scanf("%d", &categoria);
-
-        if(categoria == 1)
-          recebe_hamburguer();
-        
-        if(categoria == 2){
-            printf("\n1 - COCA");
-            printf("\n2 - SPRITE");
-            printf("\n\nDIGITE SUA ESCOLHA: ");
-            scanf("%d", &op1);
-        }
-
-        if(categoria != 9){
-            printf("\nQUANTIDADE: ");
-            scanf("%d", &quantidade);
-        }
+  
 
   // pega pedidos do cliente
   recebe_hamburguer();
