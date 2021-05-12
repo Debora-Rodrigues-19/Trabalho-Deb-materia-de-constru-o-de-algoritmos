@@ -1,23 +1,36 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include <locale.h>
-#include <string.h>
 
-char nome[50];
-char sobrenome[50];
-int cpf[11]={0};
-
-char rua [100];
-int numero;
-char bairro [100];
-int numCartao;
-int validade_mes, validade_ano;
-int codSeguranca;
-int total;    
+char nome[50]={0};
+char sobrenome[50]={0};
+char rua [100]={0};
+char bairro [100]={0};
+int numero=0;
+int opcao_pagamento=0;
+int total=0;
+long cpf=0;
 
 float precos_menu[14] = {10.0,12.0,13.0,14.0, 11.0, 5.0, 6.5, 6.0, 2.0, 3.0, 5.5, 4.5, 5.0, 0.0};
 
 int pedido_user[3] = {0,0,0};
+
+void introducao()
+{
+    printf("\n-----ALUNOS:\n");
+
+    printf("\n\t- Alan Ferandin Consorte\n");
+    printf("\n\t- Alberto Piana Borso\n");
+    printf("\n\t- Débora de Azevedo Rodrigues\n");
+    printf("\n\t- Gabriel Bombardelli\n");
+
+    printf("\n\n\tGRUPO 1: DELIVERY NA PANDEMIA\n");
+    printf("\n\tCONSTRUÇÃO DE ALGORITMOS\n");
+    printf("\n-----PROFESSOR: Maurício Zardo Oliveira\n\n");
+
+    system("pause");
+    system("cls");
+}
 
 void menu_delivery()
 {
@@ -50,35 +63,30 @@ void menu_delivery()
 
 void recebe_pedidos()
 {
-    printf("Digite a opção do Humburger:   ");
+    printf(" DIGITE A ESCOLHA DE HAMBURGUER:   ");
     scanf("%d",&pedido_user[0]);
-    printf("Digite a opção da Porção:   ");
+    printf(" DIGITE A ESCOLHA DE PORÇÃO:   ");
     scanf("%d",&pedido_user[1]);
-    printf("Digite a opção da Bebida:   ");
+    printf(" DIGITE A ESCOLHA DE BEBIDA:   ");
     scanf("%d",&pedido_user[2]);
 }
 
-void banner()
+void recebe_dados_cliente()
 {
-    printf("\n-----ALUNOS:\n");
+  printf("Digite o CPF:");
+  scanf("%d", cpf);
 
-    printf("\n\t- Alan Ferandin Consorte\n");
-    printf("\n\t- Alberto Piana Borso\n");
-    printf("\n\t- Débora de Azevedo Rodrigues\n");
-    printf("\n\t- Gabriel Bombardelli\n");
-
-    printf("\n\n\tGRUPO 1: DELIVERY NA PANDEMIA\n");
-    printf("\n\tCONSTRUÇÃO DE ALGORITMOS\n");
-    printf("\n-----PROFESSOR: Maurício Zardo Oliveira\n\n");
-   
-   system("sleep 1"); // no windows por pause
-   system("clear"); // no windows por cls
 }
 
+int forma_pagamento ()
+{
+    printf(" Escolha sua forma de pagamento: \n");
+    printf(" 1 . PIX");
+    printf(" 2 . CARTÃO (crédito / débito");
+    scanf("%d",&opcao_pagamento);
 
-void recebe_dados_cliente(){
-  printf("Digite o CPF:");
-  scanf("%d", cpf);  
+    if (opcao_pagamento == 1)
+        return 1;
 
 }
 
@@ -86,35 +94,39 @@ int main()
 {
     setlocale(LC_ALL,"Portuguese");
 
-    banner();
+    introducao();
 
-   menu_delivery();
-   /* recebendo pedidos  */
-   recebe_pedidos();
+    menu_delivery();
 
-   // pegando informações do usuario
-   recebe_dados_cliente();
+    /* recebendo pedidos  */
 
-   // pegar forma de pagamento 
-   forma_pagamento(); // essa funcao precisa pedir cartao ou pix
+    recebe_pedidos();
+    printf("Hamburguer: %d\t",pedido_user[0]);
+    printf("Porção: %d\t",pedido_user[1]);
+    printf("Bebida: %d\t",pedido_user[2]);
 
-   // calcular total de itens
-   total = calcula_total_itens(pedido_user[0],pedido_user[1],pedido_user[2]); // tem que receber e somar e retornar valor total a ser pago 
-   
-   // imprimir pedido 
-   imprimir_total_pedido();
+    forma_pagamento ();
+
     return 0;
 
 }
 
 // implementar : somar o pedido
-// implementar : forma de pagamento 
-// scanf("%d",&pessoa.endereco_numero);
-// & struct.nomedavariavel
+// implementar : forma de pagamento
 
-//struct Cadastro pessoa;
+/*
+    RECEBE PEDIDO
+    recebe_pedidos();
 
-//https://pt.stackoverflow.com/questions/87478/armazenar-dados-em-struct-e-imprimir-dados-na-tela-3-pessoas
+    RECEBE INFORMAÇÕES USUÁRIO
+    recebe_dados_cliente();
 
-// printf("\nO NOME DO CLIENTE É: %s %s", pessoa.nome, pessoa.sobrenome);
-// printf("\nA IDADE DO CLIENTE É: %d", pessoa.idade);
+    RECEBE FORMA DE PAGAMENTO
+    forma_pagamento(); // essa funcao precisa pedir cartao ou pix
+
+    CALCULA TOTAL DE TUDO
+    total = calcula_total_itens(pedido_user[0],pedido_user[1],pedido_user[2]); // tem que receber e somar e retornar valor total a ser pago
+
+    IMPRIME PEDIDO
+    imprimir_total_pedido();
+*/
